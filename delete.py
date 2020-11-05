@@ -1,7 +1,7 @@
 from connect import *
 
 def Prod_add(prod):
-   postgres_insert_query = """delete from stock where prod in (select prod from product where prod=2%s);
+   postgres_insert_query = """delete from stock where prod in (select prod from product where prod=%s);
 delete from product where prod = %s"""
    record_to_insert = (prod,prod)
    cursor.execute(postgres_insert_query, record_to_insert)
