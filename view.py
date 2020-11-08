@@ -18,6 +18,7 @@ def viewstock():
     record = cursor.fetchall()
     print(record)
 
-viewproduct()
-viewdepot()
-viewstock()
+def ViewAccess():
+    viewproduct()
+    viewdepot()
+    viewstock()

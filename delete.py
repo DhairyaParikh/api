@@ -20,17 +20,19 @@ delete from depot where dep = %s"""
    count = cursor.rowcount
    print (count, "Record deleted successfully into Depot table")
 
-try:
-    Do= input("Enter 1 for Prod / 2 for Depot: ")
-    if Do=='1':
-        prod = input("Id: ")
-        Prod_add(prod)
-    elif Do=='2':
-        dep = input("Id: ")
-        depot_add(dep)
-    else:
-        print(""" Enter 1/2 """)
+def DeleteAccess():
+    try:
+        Do= input("Enter 1 for Prod / 2 for Depot: ")
+        if Do=='1':
+            prod = input("Id: ")
+            Prod_add(prod)
+        elif Do=='2':
+            dep = input("Id: ")
+            depot_add(dep)
+        else:
+            print(""" Enter 1/2 """)
+            DeleteAccess()
 
-except (Exception, psycopg2.Error) as error:
-    if (connection):
-        print("Failed...!!", error)
+    except (Exception, psycopg2.Error) as error:
+        if (connection):
+            print("Failed...!!", error)

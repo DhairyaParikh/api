@@ -29,27 +29,28 @@ def stock_add(prodId, depId, quantity):
    count = cursor.rowcount
    print (count, "Record inserted successfully into Stock table")
 
+def AddAccess():
+    try:
+        Do= input("Enter 1 for Prod/2 for Depot/3 for stock: ")
+        if Do=='1':
+            prod = input("Id: ")
+            pname = input("Name: ")
+            price = input("price: ")
+            Prod_add(prod,pname,price)
+        elif Do=='2':
+            dep = input("Id: ")
+            addr = input("Address: ")
+            volume = input("Volume: ")
+            depot_add(dep, addr, volume)
+        elif Do=='3':
+            prodId = input("prodId: ")
+            depId = input("depId: ")
+            quantity = input("Quantity: ")
+            stock_add(prodId, depId, quantity)
+        else:
+            print(""" Enter 1/2/3 """)
+            AddAccess()
 
-try:
-    Do= input("Enter 1 for Prod/2 for Depot/3 for stock: ")
-    if Do=='1':
-        prod = input("Id: ")
-        pname = input("Name: ")
-        price = input("price: ")
-        Prod_add(prod,pname,price)
-    elif Do=='2':
-        dep = input("Id: ")
-        addr = input("Address: ")
-        volume = input("Volume: ")
-        depot_add(dep, addr, volume)
-    elif Do=='3':
-        prodId = input("prodId: ")
-        depId = input("depId: ")
-        quantity = input("Quantity: ")
-        stock_add(prodId, depId, quantity)
-    else:
-        print(""" Enter 1/2/3 """)
-
-except (Exception, psycopg2.Error) as error:
-    if (connection):
-        print("Failed...!!", error)
+    except (Exception, psycopg2.Error) as error:
+        if (connection):
+            print("Failed...!!", error)
